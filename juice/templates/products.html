@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %} 
+{% block main %} 
+<div class="jumbotron" style="background-image: url('static/image/index_banner.jpg');color:aliceblue">
+  <h1>Hi!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+{% for product in product_list %}
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img src="static/upload/{{ product.image }}" alt="{{ product.description }}" />
+        <div class="caption">
+            <h3>{{ product.name }}</h3>
+            <p style="color:gray">原件￥:<s>{{ product.price }}</s>&nbsp;现价:￥:{{ product.discount_price}}</p>
+            <p>
+                <a href="#" class="btn btn-primary" role="button">加入购物车</a> 
+                <a href="#" class="btn btn-success" role="button">立即购买</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% empty %}
+<div class="no-post">暂时还没有上线的产品！</div>
+{% endfor %} 
+{% endblock main %}
