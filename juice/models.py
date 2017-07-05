@@ -18,6 +18,7 @@ class Store(models.Model):
   address = models.CharField(max_length=200)
   store_state = models.IntegerField()
   level = models.IntegerField()
+  image = models.ImageField(upload_to = 'stores')
   created_at = models.DateTimeField()
   updated_at = models.DateTimeField()
 

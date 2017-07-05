@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block main %}
+<div class="jumbotron" style="background-image: url('static/image/store_banner.jpg');color:aliceblue">
+    <h1>&nbsp;</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+{% for store in store_list %}
+<section class="features" id="features">
+    {% if forloop.counter|divisibleby:2 %}
+
+    <div class="row app-showcase-item">
+        <div class="col-sm-6 center">
+            <img class="contain app-showcase-image" src="static/upload/{{ store.image }}"> </div>
+        <div class="col-sm-6">
+            <div class="app-showcase-text">
+                <h2>{{ store.name }}-{{ store.phone }}</h2>
+                <p class="showcase">{{ store.address }}</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row app-showcase-item">
+        <div class="col-sm-6 center col-sm-push-6">
+            <img class="contain app-showcase-image" src="static/upload/{{ store.image }}"> </div>
+        <div class="col-sm-6 col-sm-pull-6">
+            <div class="app-showcase-text text-right-desktop">
+                <h2>{{ store.name }}-{{ store.phone }}</h2>
+                <p class="showcase">{{ store.address }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+{% empty %}
+<div class="no-post">暂时还没有上线的产品！</div>
+{% endfor %} {% endblock main %}
