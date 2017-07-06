@@ -7,6 +7,7 @@ def index(request):
   return products(request, 1)
 
 def products(request, page):
+  request.session['custom'] = 'custom_name'
   page_size = 18
   product_list = Product.objects.filter(product_state = 1).order_by('-updated_at')
   total_count = product_list.count()

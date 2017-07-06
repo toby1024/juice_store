@@ -64,6 +64,17 @@ class Customer(models.Model):
   def is_vip(self):
     return self.vip == 1
 
+class Login(models.Model):
+  username = models.CharField(max_length=100)
+  password = models.CharField(max_length=200)
+  last_login_time = models.DateTimeField(auto_now_add=True)
+  customer = models.ForeignKey(Customer)
+  wx_openid = models.CharField(max_length=200)
+
+  def __str__(self):
+    return self.username
+
+
 class PayType(models.Model):
   name = models.CharField(max_length=50)
 

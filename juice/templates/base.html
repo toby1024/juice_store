@@ -47,6 +47,13 @@
                             <li class="cl-effect-11"><a href="/juice" data-hover="首页">首页</a></li>
                             <li class="cl-effect-11"><a href="/juice/stores" data-hover="店铺">店铺</a></li>
                             <li class="cl-effect-11"><a href="/juice/about" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11">
+                               {% if request.session.custom %}
+                               <a href="" data-hover="{{ request.session.custom }}">{{ request.session.custom }}</a>
+                               {% else %}
+                                <a href="/juice/about" data-hover="登录">登录</a>
+                               {% endif %}
+                            </li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
