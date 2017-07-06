@@ -16,11 +16,11 @@ class Store(models.Model):
   link_man = models.CharField(max_length=30)
   phone = models.CharField(max_length=30)
   address = models.CharField(max_length=200)
-  store_state = models.IntegerField()
+  store_state = models.IntegerField(default=1)
   level = models.IntegerField()
   image = models.ImageField(upload_to = 'stores')
-  created_at = models.DateTimeField()
-  updated_at = models.DateTimeField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def alive(self):
     return self.store_state == 1
@@ -34,10 +34,10 @@ class Product(models.Model):
   price = models.FloatField()
   discount = models.IntegerField()
   image = models.ImageField(upload_to = 'products')
-  product_state = models.IntegerField()
+  product_state = models.IntegerField(default=1)
   category = models.ForeignKey(Category)
-  created_at = models.DateTimeField()
-  updated_at = models.DateTimeField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def alive(self):
     return self.product_state == 1
@@ -55,8 +55,8 @@ class Customer(models.Model):
   birthday = models.DateField()
   vip = models.IntegerField()
   customer_state = models.IntegerField()
-  created_at = models.DateTimeField()
-  updated_at = models.DateTimeField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def get_absolute_url(self):
     return reverse('juice:product', kwargs={'pk': self.pk}) 
@@ -78,11 +78,11 @@ class Order(models.Model):
   discount = models.IntegerField()
   payed = models.FloatField()
   pay_type = models.ForeignKey(PayType)
-  order_state = models.IntegerField()
+  order_state = models.IntegerField(default=1)
   store = models.ForeignKey(Store)
   saler = models.ForeignKey(User)
-  created_at = models.DateTimeField()
-  updated_at = models.DateTimeField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def is_payed(self):
     return self.payed == 1
